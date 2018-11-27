@@ -20,8 +20,8 @@ heroku container:release web -a polar-refuge-51031
 3. Run Hasura
 
 ```
-heroku addons:create -a serene-basin-12094 heroku-postgresql:hobby-dev
 heroku create -s container 
+heroku addons:create -a serene-basin-12094 heroku-postgresql:hobby-dev
 heroku container:push web -a serene-basin-12094 --recursive
 heroku container:release web -a serene-basin-12094
 ```
