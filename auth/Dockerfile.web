@@ -1,0 +1,27 @@
+FROM microsoft/dotnet:2.1.403-sdk-stretch AS build
+
+# NUGET RESTORE
+
+WORKDIR /app
+COPY *.sln ./
+COPY IdsHasura/*.csproj ./IdsHasura/
+RUN dotnet restore -r debian.8-x64
+
+# COPY SOLUTION FILES
+
+WORKDIR /app
+COPY IdsHasura/. ./IdsHasura/
+
+# PUBLISH
+
+WORKDIR /app/IdsHasura
+RUN dotnet publish -c Release -r debian.8-x64 -o /out/app
+
+# RUNTIME
+
+FROM microsoft/dotnet:2.1.5-aspnetcore-runtime-stretch-slim AS runtime
+RUN apt-get update && apt-get install openssl -y
+WORKDIR /app
+COPY --from=build /out/app ./
+ENV ASPNETCORE_ENVIRONMENT Production
+CMD ASPNETCORE_URLS=http://0.0.0.0:$PORT dotnet IdsHasura.dll

@@ -1,0 +1,13 @@
+FROM hasura/graphql-engine:v1.0.0-alpha30
+
+# Enable the console
+ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
+
+# Change $DATABASE_URL to your heroku postgres URL if you're not using
+# the primary postgres instance in your app
+CMD graphql-engine \
+    --database-url $DATABASE_URL \
+    serve \
+    --server-port $PORT \
+    --access-key abcd \
+    --jwt-secret '{"type": "RS256", "key": "-----BEGIN CERTIFICATE-----\nMIIEqjCCApICCQCLZRtRKZcpxTANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxy\ndWxlYm9vay5hcHAwHhcNMTgxMTEyMTYyOTU0WhcNMTkxMTEyMTYyOTU0WjAXMRUw\nEwYDVQQDDAxydWxlYm9vay5hcHAwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIK\nAoICAQCbBu3BlgOBDU9SKC6iroR+1aAEiUerOLwKDi0K4tqAOlXSPSOeRMlwZLMY\nMKDLKgJ2ppYpFrxcm5LDwGSnk2jnw1b2JCDS57sFD3OUK59TxlHyKKmrj2pvxgDT\n2tGy9Fa7ytXWu7t3hZIQJe2DkgbP9wwdKCsfUr91qI/4aFywOu9pnD9/Sz9KQlwl\nCWgOGCF1ctfNPJlzVeUkwCqQ7W66rfrbwg7vBbX4bK0ZpRWai8fw7cAuITFsUgyG\nlQRXidYIflKcS0gTyM4XuyXxC1eRYp/5t+e0L8zDsaShpsNXDlOKsp1PR2Bswsm3\nz1Oz4FoxeqaTR58S00pr8YOhS+2x00+vf64yyLDxOkYem7Z9SNCe5drvYYZi83eZ\nezUWsVP1wpflsH0tIgaas7WIcru6BZDjjxr0fjkb4ttgHdE6gxe/3mdEmWC45Ey6\nRjDuccSg9D/Fru4z3p9p6D2tUj8ftv7wPMQhfrM0bVNUfYVJ6+vQabQEWR4uZeTq\nA2s8KTaKxPB4lCSQdPAQ4zCNkwe7dKAchgNZ5FMSesc5dofgW42ZrHgtOy/4Bmlr\nh4HFqGxaJFxxohyQR65p3jRB2vZ2Es6LZ/ZUheXMUZGJdrciC2Fx+3RV2TuYe5y9\nNzPgOGZPZtAk461kUEMzj6BzV6vHcuZzSa3+S0Fnwe7i9KzMiwIDAQABMA0GCSqG\nSIb3DQEBCwUAA4ICAQB3ZgaMRwykbuFPXFQhcrG2uStwGcnjz/Z/1t9jU8PqtsqK\nyS4yGWIqWKDQUaYtQNIT9BspVR0dG6rmvaUzsbhpeDure7O2Y7dF4LjhJsApOdDx\naw1T2OpU0rG0Ghy0deWuKFwL0wNQKOlxNqGQDFIttITfue8qJqDVtyMseFab/woT\nWeCT6WkbTSaDPSwJQJzQha8kkcaSI+3v0cNhIdJUmCu2u+XumIw0IVWg5nU9f8t5\ntGqLhxNN2CsMqg3gQur/KBqnAZPO79gJJ/fUKbCpp3/iNIJshM5sDz9NNsR1auiL\nu2/HF4WyWwvrI0g8kC/8UxZs3RbcGBH4JuvuzZ6etiMcl5c/rBJjBTxYaWgb3OJX\n5V8hD4Bu3cLbkTy0Gp0X7X9frXvSF60X1bIg/BA//4yBft7Sn7dvIa0WOSqDn01E\n6V1kg8V0zu7X7FEQCoIdlfG6DgVelafBndeNn9brrmfBIMnnyKN+pN+AHp6NsLve\nFROwQ3A60QlCln4QQrcgu4Wb61dQPkfmrwqTG0KyUWerv0v6vXkvS/HOAzR+zsgq\nS0xdGJ5Q0tk+/d185wd8G9msAkjoCgwLHtHO8PEzxmx0dSrBH4oYkqZzd1ZcZF0v\nUIgoD/6ufywgIvsuIrftAGD+3rn+wHwJFYgaMND+vNLxDf8fMnaH1l9cZWHDlg==\n-----END CERTIFICATE-----", "claims_namespace": "rulebook_claims"}'
